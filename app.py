@@ -5,7 +5,7 @@ from langchain_google_genai.llms import GoogleGenerativeAI
 
 # Initialize the Google GenAI LLM via LangChain with API key
 def initialize_model():
-    api_key = "AIzaSyDIpAnZTFn5hQXsnMH08xUDh_0kpN3k6Bs"  # Replace with your actual API key
+    api_key = st.secrets["google"]["api_key"]   # Replace with your actual API key
     return GoogleGenerativeAI(model="gemini-2.0-flash-exp", api_key=api_key)
 if "questions" not in st.session_state:
     st.session_state.questions = []
