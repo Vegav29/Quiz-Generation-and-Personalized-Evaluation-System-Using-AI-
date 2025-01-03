@@ -1,6 +1,6 @@
 # Quiz Generation and Personalized Evaluation System Using AI 
 Welcome to the **Quiz Generation and Personalized Evaluation System Using AI**! This app helps you get personalized feedback on your answers in a fun and motivating way. It’s designed to help you improve your responses and boost your confidence as you learn.
-
+## live deployed link:https://huggingface.co/spaces/vegav29/quizapp
 ## How It Works
 
 1. **Answer the Questions**  
