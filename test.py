@@ -108,7 +108,7 @@ def generate_overall_grade(input_text, questions, responses, llm):
 
         Evaluate the given answer and assign a grade (A, B, C, D, F) based on its quality. Only return the grade followed by 2–4 words inspired by popular Tamil movie dialogues.
 
-For high scores (A and B): Use iconic, celebratory Tamil movie lines that reflect success and victory.
+For high scores (A and B): Use iconic, celebratory Tamil movie dialouges that reflect success and victory.
 For medium scores (C): Use neutral yet motivational Tamil movie dialogues to highlight progress and potential.
 For low scores (D and F): Use only  Tamil movie dialogues  and a comeback (strictly avoid sarcasm or discouragement).use postive and fun emojis 
         """
@@ -173,7 +173,7 @@ def generate_individual_feedback(question, response, llm):
         - **Relevance:** Your feedback here.
         - **Accuracy:** Your feedback here.
         - **Clarity:** Your feedback here.
-        - **Depth:** Your feedback here.bn/ 
+        - **Depth:** Your feedback here.
 
         **Ideal Answer**: ideal answer for question(it can be a paragraph or a few lines of max 500 characters)
        

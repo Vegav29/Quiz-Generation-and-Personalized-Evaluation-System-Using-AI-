@@ -5,7 +5,7 @@ from langchain_google_genai.llms import GoogleGenerativeAI
 
 # Initialize the Google GenAI LLM via LangChain with API key
 def initialize_model():
-    api_key = "your api key"  # Replace with your actual API key
+    api_key = "AIzaSyDIpAnZTFn5hQXsnMH08xUDh_0kpN3k6Bs"  # Replace with your actual API key
     return GoogleGenerativeAI(model="gemini-2.0-flash-exp", api_key=api_key)
 if "questions" not in st.session_state:
     st.session_state.questions = []
@@ -132,9 +132,9 @@ def generate_overall_grade(input_text, questions, responses, llm):
 
         Evaluate the given answer and assign a grade (A, B, C, D, F) based on its quality. Only return the grade followed by 2–4 words inspired by popular Tamil movie dialogues.
 
-For high scores (A and B): Use iconic, celebratory Tamil movie lines that reflect success and victory.
-For medium scores (C): Use neutral yet motivational Tamil dialogues to highlight progress and potential.
-For low scores (D and F): Use Tamil movie dialogues that inspire resilience, hope, and a comeback (strictly avoid sarcasm or discouragement).use postive and fun emojis 
+For high scores (A and B): Use iconic, celebratory  popular Tamil movie punch dialogues  that reflect success and victory.
+For medium scores (C): Use  motivational popular   Tamil movie punch dialogues  to highlight progress and potential.
+For low scores (D and F): Use popular  Tamil movie punch dialogues that inspire resilience, hope, and a comeback .(use postive and fun emojis strictly avoid discouragement)
         """
     )
     chain = LLMChain(llm=llm, prompt=prompt_template)
@@ -145,31 +145,30 @@ def refine_overall_feedback(feedback, llm, questions, responses):
     refine_prompt_template = PromptTemplate(
         input_variables=["feedback", "questions", "responses"],
         template=""" 
-        You are a fun and motivating teacher who use uses lots of emojis to engage with students who tasked with refining the feedback for a student's performance. The feedback should be encouraging, concise, and clear. Ensure the feedback is well-organized, flows logically, and highlights key points effectively. Focus more on the student's performance and knowledge, and avoid generalizations like "general practice.be specific on student ,always be motivation and optimistic in your feedback, :
+        You are a fun and motivating teacher who uses lots of emojis to engage with students and provide feedback. The feedback should be encouraging, concise, and clear. Ensure the feedback is well-organized, focused on the student's performance and knowledge, and avoid generalizations like "general practice." Always be specific, motivational, and optimistic in your feedback.
 
+    **Refine the following feedback to ensure it is polished, concise, motivating, and actionable. Focus on providing actionable insights while maintaining a constructive and positive tone.**
 
-        Feedback to refine:
-        {feedback}
+    Feedback to refine: {feedback}
+    Question: {questions}
+    Response: {responses}
 
-        Question: {questions}
-        Response: {responses}
-        provide a detailed evaluation in the following format and in bulletin points:
+    Provide a detailed evaluation in the following format and all the below individual section should be  in bullet points not as paragraph:
 
-        1. **Strengths**:
-            - Highlight specific strengths such as **understanding**, **application of knowledge**, and **engagement with the topic**. 
-            - This section should be at least 400 characters and at most 500 characters.
+    1. **Your Superpowers 💪🔥**:
+        - Highlight specific strengths such as **understanding** **application of knowledge**, and **engagement with the topic**.
+        - This section should be at least 400 characters and at most 500 characters,should be  in bullet points not as paragraph
 
-        2. **Weaknesses**:
-            - Identify **gaps in knowledge** and **lack of specificity**. Mention areas like **conceptual understanding**, **real-world applications**, and **use of precise terminology**.
-            - This section should be at least 400 characters and at most 500 characters.
+    2. **Where We Can Level Up 🎯🔨**:
+        - Identify **gaps in knowledge** and **lack of specificity**. Mention areas like **conceptual understanding**, **real-world applications**, and **use of precise terminology**.
+        - This section should be at least 400 characters and at most 500 characters,should be  in bullet points not as paragraph
 
-        3. **Areas of Improvement**:
-            - Focus on helping the student develop **depth of knowledge** by studying more advanced topics or working on real-world examples.
-            - Suggest improving the **clarity** of responses and the **specificity** of examples.
-            - This section should be at least 400 characters and at most 500 characters.
-         End with a motivational movie dialouge based on student performance comment and emojis to encourage the student.
-        Refine the following feedback to ensure it is polished, concise, motivating, and actionable. Focus on providing actionable insights while maintaining a constructive and positive tone.
-        """
+    3. **Your Journey to Mastery 🏅🚀**:
+        - Focus on helping the student develop **depth of knowledge** by studying more advanced topics or working on real-world examples.
+        - Suggest improving the **clarity** of responses and the **specificity** of examples.
+        - This section should be at least 400 characters and at most 500 characters,should be  in bullet points not as paragraph
+    **End with a one liner motivational movie dialogue based on the student's performanceand emojis to encourage the student.,no add any addtional text **
+    """
     )
     # Create a chain with the LLM model and refined prompt
     chain = LLMChain(llm=llm, prompt=refine_prompt_template)
@@ -193,12 +192,12 @@ def generate_individual_feedback(question, response, llm):
         3. Clarity: Was the response well-structured and easy to understand?
         4. Depth: Did the response show insight or go beyond surface-level information?
         
-        Format your feedback in ths fromat each in 1-2 lines and in bullet points:
-        - **Relevance:** Your feedback here.
-        - **Accuracy:** Your feedback here.
-        - **Clarity:** Your feedback here.
-        - **Depth:** Your feedback here.
-        -**ideal optimized response based on question and respone** max: 500 characters
+        Format your feedback in the following format and  each section in below 1-2 lines and in bullet points:
+        - **🎯Relevance:** Your feedback here.
+        - **✅Accuracy:** Your feedback here.
+        - **💡Clarity:** Your feedback here.
+        - **🌊 Depth:** Your feedback here.
+        -**Ideal Answer** :ideal answer for question(it can be a paragraph or a few lines of max 500 characters)max: 500 characters
        
         """
     )
@@ -264,7 +263,7 @@ if st.session_state.current_index < len(st.session_state.questions):
         last_question = st.session_state.questions[st.session_state.current_index - 1]
         last_response = st.session_state.responses[-1]
         st.write(
-            f"#### Let's move on to the next question:\n\n"
+            f"#### Let's move on to the next question😊:\n\n"
             f"**{st.session_state.current_index + 1}: {current_question}**"
         )
     else:
@@ -293,37 +292,52 @@ st.header("Feedback and Grade")
 
 
 # Step 4: Overall Feedback and Grade (Only after all individual feedback is displayed)
-
-
+# Check if all responses have been given
 if len(st.session_state.responses) == len(st.session_state.questions):
-    # Generate individual feedback for each question-response pair
-    if "overall_grade" not in st.session_state:
-        st.write("Generating overall grade...")
-        overall_grade = generate_overall_grade(input_text, st.session_state.questions, st.session_state.responses, llm)
-        st.session_state.overall_grade = overall_grade
+    # All questions have been answered, so generate feedback and grade
+    if "individual_feedback" not in st.session_state:
+        st.write("Generating individual feedback for each response...")
+
+        # Generate individual feedback for each question-response pair
+        for i, (question, response) in enumerate(zip(st.session_state.questions, st.session_state.responses)):
+            # Ensure feedback is generated only once
+            if f"individual_feedback_{i}" not in st.session_state:
+                feedback = generate_individual_feedback(question, response, llm)
+                st.session_state[f"individual_feedback_{i}"] = feedback  # Save feedback to session state
+
+            # Display question, response, and individual feedback
+            st.write(f"### Question {i + 1}: {question}")
+            st.write(f"**Your Answer:** {response}")
+            st.write(f"**Feedback:** {st.session_state[f'individual_feedback_{i}']}")
+
+        # Generate overall feedback and grade only after all questions are answered
+        if "overall_feedback" not in st.session_state:
+            st.write("Generating overall feedback...")
+
+            # Generate overall feedback based on all responses and the questions
+            overall_feedback = generate_overall_feedback(input_text, st.session_state.questions, st.session_state.responses, llm)
+
+            # Refine the overall feedback and store it in session state
+            refined_feedback = refine_overall_feedback(overall_feedback, llm, st.session_state.questions, st.session_state.responses)
+            st.session_state.overall_feedback = refined_feedback
+
+        # Display the overall feedback
+        st.subheader("Overall Feedback")
+        st.write(st.session_state.overall_feedback)
+
+        # Generate the overall grade based on responses and display it
+        if "overall_grade" not in st.session_state:
+            st.write("Generating overall grade...")
+
+            # Generate the overall grade based on the responses
+            overall_grade = generate_overall_grade(input_text, st.session_state.questions, st.session_state.responses, llm)
+            st.session_state.overall_grade = overall_grade
+
+        # Display overall grade
         st.subheader("Overall Grade")
         st.write(st.session_state.overall_grade)
-    for i, (question, response) in enumerate(zip(st.session_state.questions, st.session_state.responses)):
-        if f"individual_feedback_{i}" not in st.session_state:
-        # Generate individual feedback for each question-response pair
-            feedback = generate_individual_feedback(question, response, llm)
-            st.session_state[f"individual_feedback_{i}"] = feedback  # Save feedback to session state
 
-    # Display question, response, and individual feedback
-        st.write(f"### Question {i + 1}: {question}")
-        st.write(f"**Your Answer:** {response}")
-        st.write(f"**Feedback:** {st.session_state[f'individual_feedback_{i}']}")
-    if "overall_feedback" not in st.session_state:
-        st.write("Generating overall feedback...")
-        overall_feedback = generate_overall_feedback(input_text, st.session_state.questions, st.session_state.responses, llm)
-
-        # Refine the overall feedback and store it in session state
-        refined_feedback = refine_overall_feedback(overall_feedback, llm, st.session_state.questions, st.session_state.responses)
-        st.session_state.overall_feedback = refined_feedback
-
-    # Display refined overall feedback
-    st.subheader("Overall Feedback")
-    st.write(st.session_state.overall_feedback)
+    else:
+        st.write("Feedback and grading are already generated.")
 
 
-    # Display overall grade
