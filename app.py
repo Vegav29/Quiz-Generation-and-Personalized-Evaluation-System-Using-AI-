@@ -334,7 +334,7 @@ if len(st.session_state.responses) == len(st.session_state.questions):
             overall_grade = generate_overall_grade(input_text, st.session_state.questions, st.session_state.responses, llm)
             st.session_state.overall_grade = overall_grade
 
-        # Display overall grade
+        # Display overall gradee
         st.subheader("Overall Grade")
         st.write(st.session_state.overall_grade)
 
