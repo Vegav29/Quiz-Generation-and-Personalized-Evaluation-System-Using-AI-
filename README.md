@@ -14,10 +14,30 @@ Welcome to the **Quiz Generation and Personalized Evaluation System Using AI**! 
    - **Depth**: How deeply you explore the topic.
    - **Ideal Answer**: What a perfect response would look like.
 
-3. **Overall feedback**  
-   The feedback will help your strength,weakness and areas of improvement
+3. **Bloom’s Taxonomy Levels**
+   - Ensures questions span all levels of cognitive learning, challenging users to:
+     - Remember
+     - Understand
+     - Apply
+     - Analyze
+     - Evaluate
+     - Create
+4. **Evaluation Criteria**
 
-4. **Grade**  
+The system uses the following criteria to evaluate student responses:
+
+1.  **Conceptual Understanding:** Demonstrates accurate and thorough understanding of the topic.
+2.  **Clarity and Coherence:** Responses are logically structured, well-organized, and easy to follow.
+3.  **Depth of Knowledge:** Provides in-depth insights beyond surface-level understanding.
+4.  **Application and Examples:** Includes relevant real-world examples or practical applications.
+5.  **Accuracy and Precision:** Responses are factually correct and free from errors.
+6.  **Critical Thinking:** Demonstrates reasoning, analysis, or evaluation with evidence or justification.
+7.  **Engagement with Feedback:** Effectively incorporates feedback or follow-up prompts.
+8.  **Creativity and Originality:** Showcases innovative ideas, unique perspectives, or creative approaches.
+9.  **Relevance:** Stays focused on the topic and directly addresses the questions.
+10. **Communication Skills:** Communicates effectively and clearly.
+
+5. **Grade**  
 ## Tech Stack
 ### **Frontend**
 - **Streamlit**: A framework that allows for quick, interactive web apps, used to create the front-end interface for the feedback system and quiz display.
